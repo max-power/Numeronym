@@ -1,0 +1,9 @@
+module Numeronym
+  VERSION: String
+
+  def self.phrase: (untyped input) -> String
+  def self.word: (untyped input) -> String
+  def self.robot: (untyped input) -> String
+end
+
+N7M: singleton(Numeronym)
