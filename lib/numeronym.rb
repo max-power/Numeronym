@@ -8,16 +8,18 @@ module Numeronym
   # Phrase style: "Andreessen Horowitz" => "A16z".
   def phrase(input)
     str = normalize(input)
-    return str if str.length < 3
+    return str if str.length <= 3
 
-    middle_count = str[1...-1].scan(/\S/).size
+    middle_count = str[1...-1].scan(/\S/).length
     "#{str[0]}#{middle_count}#{str[-1]}"
   end
 
   # Word style: "internationalization" => "i18n".
   def word(input)
     str = normalize(input)
-    str.length > 3 ? "#{str[0]}#{str.length - 2}#{str[-1]}" : str
+    return str if str.length <= 3
+
+    "#{str[0]}#{str.length - 2}#{str[-1]}"
   end
 
   # Robot style: "robot eyes" => "R4-E3".
